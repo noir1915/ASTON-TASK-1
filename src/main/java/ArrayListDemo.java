@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 
 /**
@@ -8,7 +7,7 @@ public class ArrayListDemo {
     public static void main(String[] args) {
 
         int initialCapacity = 20;
-        /*ListInteger*/
+        System.out.println("/*ListInteger*/");
         ArrayListImpl<Integer> initialCapacityList = new ArrayListImpl<Integer>(initialCapacity);
         for (int i = 0; i < initialCapacity; i++) {
             initialCapacityList.add((int) (Math.random() * 100));
@@ -16,14 +15,15 @@ public class ArrayListDemo {
         System.out.println("Sorting:");
         System.out.println("list before sorting: " + Arrays.toString(initialCapacityList.array));
         QuickSort.sort(Arrays.asList(initialCapacityList.array));
-        System.out.println("list after sorting:  " + Arrays.toString(initialCapacityList.array) + "\n\n");
+        System.out.println("list after sorting:  " + Arrays.toString(initialCapacityList.array) + "\n");
 
-        /*ListString*/
+        System.out.println("/*ListString*/");
         ArrayListImpl<String> list = new ArrayListImpl<String>(initialCapacity);
         System.out.println("List size before added: " + list.size());
         for (int i = 0; i < initialCapacity; i++) {
             list.add(String.valueOf((int)(Math.random() * 100)));
         }
+        System.out.println("Sorting:");
         System.out.println("list before sorting: " + Arrays.toString(list.array));
         QuickSort.sort(Arrays.asList(list.array));
         System.out.println("list after sorting:  "+ Arrays.toString(list.array));

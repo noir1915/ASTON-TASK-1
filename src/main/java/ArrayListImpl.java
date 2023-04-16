@@ -16,7 +16,7 @@ public class ArrayListImpl<E> {
      */
     private static final int DEFAULT_CAPACITY = 10;
 
-    private int capacity;
+    private int capacity = 0;
 
     /**
      * The size of the ArrayListImpl (the number of elements it contains).
@@ -59,20 +59,6 @@ public class ArrayListImpl<E> {
         }
     }
 
-    /**
-     * Constructs a list containing the elements of the specified
-     * collection, in the original order.
-     */
-    public ArrayListImpl(Collection<? extends E> collection) {
-        if (collection.isEmpty()) {
-            capacity = DEFAULT_CAPACITY;
-            array = new Object[capacity];
-        } else {
-            capacity = collection.size();
-            size = capacity;
-            array = collection.toArray();
-        }
-    }
 
     private boolean isEnoughCapacity() {
         if ((size + 1) <= capacity) {
@@ -86,14 +72,11 @@ public class ArrayListImpl<E> {
     /**
      * Appends the specified element to the end of this list.
      */
-    public boolean add(E element) {
+    public void add(E element) {
         if (isEnoughCapacity()) {
             array[size++] = element;
-            return true;
         }
-        return false;
     }
-
 
     /**
      * Returns the element at the specified position in this list
@@ -123,25 +106,23 @@ public class ArrayListImpl<E> {
      * if it is present.  If the list does not contain the element, it is
      * unchanged.
      */
-    public boolean remove(Object element) {
+    public void remove(Object element) {
         if (element == null) {
             for (int index = 0; index < size; index++) {
                 if (array[index] == null) {
                     fastRemove(index);
-                    return true;
+                    return;
                 }
             }
         } else {
             for (int index = 0; index < size; index++) {
                 if (element.equals(array[index])) {
                     fastRemove(index);
-                    return true;
+                    return;
                 }
             }
         }
-        return false;
     }
-
     private void fastRemove(int index) {
         int rightPart = size - index - 1;
         if (rightPart > 0) {
@@ -151,8 +132,8 @@ public class ArrayListImpl<E> {
     }
 
     /**
-     * Removes all of the elements from this list. The list will
-     * be empty after this call returns.
+     * Removes all of the elements from this list.
+     * The list will be empty after this call returns.
      */
     public void clear() {
         for (int i = 0; i < size; i++) {
