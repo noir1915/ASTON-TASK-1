@@ -59,21 +59,11 @@ public class ArrayListImpl<E> {
         }
     }
 
-
-    private boolean isEnoughCapacity() {
-        if ((size + 1) <= capacity) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     /**
      * Appends the specified element to the end of this list.
      */
     public void add(E element) {
-        if (isEnoughCapacity()) {
+        if ((size + 1) <= capacity) {
             array[size++] = element;
         }
     }

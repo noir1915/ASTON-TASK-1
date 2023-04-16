@@ -84,6 +84,16 @@ public class ArrayListImplTest extends TestCase {
     }
 
     /**
+     * Checking if a given list contains an i-element
+     */
+    @Test
+    public void testContains(){
+        boolean actual = stringArrayList.contains("5");
+        boolean expected = true;
+        assertEquals(expected, actual);
+    }
+
+    /**
      * List cleanup check
      * After executing the method, an empty list remains
      */
