@@ -42,8 +42,7 @@ public class ArrayListImpl<E> {
      * Constructs an empty list with an initial capacity of DEFAULT_CAPACITY.
      */
     public ArrayListImpl() {
-        capacity = DEFAULT_CAPACITY;
-        array = (E[]) new Object[capacity];
+        array = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
     /**
@@ -51,8 +50,7 @@ public class ArrayListImpl<E> {
      */
     public ArrayListImpl(int initialCapacity) {
         if (initialCapacity <= DEFAULT_CAPACITY) {
-            capacity = DEFAULT_CAPACITY;
-            array = new Object[DEFAULT_CAPACITY];
+              array = new Object[DEFAULT_CAPACITY];
         } else {
             capacity = initialCapacity;
             array = new Object[capacity];
