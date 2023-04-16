@@ -54,6 +54,7 @@ public class ArrayListImpl<E> {
         } else {
             capacity = initialCapacity;
             array = new Object[capacity];
+//            extendCapacity();
         }
     }
 
@@ -155,7 +156,6 @@ public class ArrayListImpl<E> {
         return -1;
     }
 
-
     /**
      * Returns true if this list contains the specified element.
      */
@@ -166,6 +166,14 @@ public class ArrayListImpl<E> {
             return false;
         }
     }
+
+//    private void extendCapacity() {
+//        int newCapacity = (capacity * 3) / 2 + 1;
+//        E[] newElementData = (E[]) new Object[newCapacity];
+//        System.arraycopy(array, 0, newElementData, 0, size);
+//        array = newElementData;
+//        capacity = newCapacity;
+//    }
 
     /**
      * Sort list elements by Comparator.
