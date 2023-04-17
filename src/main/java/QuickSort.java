@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Quicksort implementation that takes n*log(n) time on average. Like all

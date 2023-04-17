@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Resizable-array implementation of the List interface. Implements
@@ -50,11 +51,11 @@ public class ArrayListImpl<E> {
      */
     public ArrayListImpl(int initialCapacity) {
         if (initialCapacity <= DEFAULT_CAPACITY) {
-              array = new Object[DEFAULT_CAPACITY];
+            array = new Object[DEFAULT_CAPACITY];
         } else {
             capacity = initialCapacity;
             array = new Object[capacity];
-//            extendCapacity();
+            extendCapacity();
         }
     }
 
@@ -62,9 +63,10 @@ public class ArrayListImpl<E> {
      * Appends the specified element to the end of this list.
      */
     public void add(E element) {
-        if ((size + 1) <= capacity) {
-            array[size++] = element;
+        if (size == capacity) {
+            extendCapacity();
         }
+        array[size++] = element;
     }
 
     /**
@@ -81,7 +83,6 @@ public class ArrayListImpl<E> {
      * Removes the element at the specified position in this list.
      */
     public E remove(int index) {
-
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
@@ -167,13 +168,18 @@ public class ArrayListImpl<E> {
         }
     }
 
-//    private void extendCapacity() {
-//        int newCapacity = (capacity * 3) / 2 + 1;
-//        E[] newElementData = (E[]) new Object[newCapacity];
-//        System.arraycopy(array, 0, newElementData, 0, size);
-//        array = newElementData;
-//        capacity = newCapacity;
-//    }
+    /**
+     * The method creates a new list with a new element capacity.
+     * The capacity of the new list is increased by
+     * the formula: (capacity * 3) / 2 + 1.
+     */
+    private void extendCapacity() {
+        int newCapacity = (capacity * 3) / 2 + 1;
+        E[] newArray = (E[]) new Object[newCapacity];
+        System.arraycopy(array, 0, newArray, 0, size);
+        array = newArray;
+        capacity = newCapacity;
+    }
 
     /**
      * Sort list elements by Comparator.

@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ArrayListDemo {
     public static void main(String[] args) {
 
-        int initialCapacity = 20;
+        int initialCapacity = 10;
         System.out.println("/*ListInteger*/");
         ArrayListImpl<Integer> initialCapacityList = new ArrayListImpl<Integer>(initialCapacity);
         for (int i = 0; i < initialCapacity; i++) {
