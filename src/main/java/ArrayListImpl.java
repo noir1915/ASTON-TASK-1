@@ -69,13 +69,18 @@ public class ArrayListImpl<E> {
         array[size++] = element;
     }
 
+    private boolean indexCorrect(int index){
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        return true;
+    }
+
     /**
      * Returns the element at the specified position in this list
      */
     public E get(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        indexCorrect(index);
         return (E) array[index];
     }
 
@@ -83,9 +88,7 @@ public class ArrayListImpl<E> {
      * Removes the element at the specified position in this list.
      */
     public E remove(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        indexCorrect(index);
         E element = (E) array[index];
         fastRemove(index);
         return element;
